@@ -1,0 +1,7 @@
+﻿field,nonmissing_stock_months,nonmissing_daily_rows,interpretation
+indicativefee,1635162,31436865,primary annual decimal fee field
+dcbs,1635162,31436865,raw field retained; units/outliers require dictionary validation
+saf,940816,18500916,raw field retained; units/outliers require dictionary validation
+sar,940086,18426219,raw field retained; units/outliers require dictionary validation
+utilisation,2103849,42458484,raw field retained; units/outliers require dictionary validation
+activeutilisation,2103849,42458484,raw field retained; units/outliers require dictionary validation

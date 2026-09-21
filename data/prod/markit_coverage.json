@@ -1,0 +1,15 @@
+{
+  "market_areas": [
+    "US Equity (Others)",
+    "US Equity (RUSSELL 2000)",
+    "US Equity (S&P500)"
+  ],
+  "quality_counts": {
+    "indicativefee": 34155040,
+    "dcbs": 34155040,
+    "saf": 19786879,
+    "sar": 19711963,
+    "utilisation": 46784528,
+    "activeutilisation": 46784528
+  }
+}

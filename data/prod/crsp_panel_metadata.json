@@ -1,0 +1,14 @@
+{
+  "daily_rows_written_before_deduplication": null,
+  "daily_duplicate_keys_removed": null,
+  "daily_rows_after_deduplication": null,
+  "monthly_rows": 1221637,
+  "unique_permnos": 12344,
+  "header_common_stock_rows": 30230,
+  "ordinary_common_stock_mapping": "SecurityType=EQTY & SecuritySubType=COM & ShareType=NS",
+  "DlyCap_conversion": "market_cap = abs(DlyCap) * 1000; output dollars",
+  "start": "2005-01-01",
+  "end": "2025-12-31",
+  "monthly_only": true,
+  "elapsed_seconds": 164.74643898010254
+}

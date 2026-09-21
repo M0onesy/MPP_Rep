@@ -1,0 +1,28 @@
+{
+  "solver": "CLARABEL_DIRECT",
+  "models": [
+    "M0",
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "start": "2007-01",
+  "end": "2025-12",
+  "transaction_cost": 0.005,
+  "fee_scale": 1.0,
+  "include_lending": true,
+  "common_fee_only": true,
+  "n_per_group": 200,
+  "sensitivity_models": [
+    "M2",
+    "M3"
+  ],
+  "sensitivity_status": "actual_one_way",
+  "elapsed_seconds": 512.979820728302,
+  "prototype_status": "Python prototype; not a full JKMP replication",
+  "constraints": {
+    "sum_weights": 1.0,
+    "single_weight_bound": 0.02,
+    "gross_exposure_limit": 1.5
+  }
+}

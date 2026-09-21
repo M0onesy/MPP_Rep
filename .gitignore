@@ -1,0 +1,50 @@
+# Raw vendor data and generated large data
+data/raw/**
+!data/raw/**/
+!data/raw/**/.gitkeep
+
+data/mid/**
+!data/mid/**/
+!data/mid/**/.gitkeep
+
+data/prod/**/*.parquet
+data/prod/test_proto*/**
+!data/prod/test_proto*/
+!data/prod/test_proto*/.gitkeep
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+.venv/
+venv/
+env/
+ENV/
+
+# Logs, temp files, and local machine state
+*.log
+*.tmp
+*.temp
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
