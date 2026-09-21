@@ -1,97 +1,97 @@
-# MPP_Rep
+# MPP_Rep：借券费用与因子研究复刻项目
 
-This repository contains a Python research prototype for auditing and studying U.S. equity securities-lending data, CRSP matching, descriptive borrow-fee patterns, and an M0-M3 portfolio-cost prototype.
+本仓库是一个面向论文复刻、数据审计和机制验证的 Python 研究项目。项目围绕美国股票借券数据、CRSP 匹配、借券费描述性统计，以及 M0-M3 组合成本原型展开。
 
-本仓库是一个面向论文复刻与机制验证的公开代码仓库。它重点保留可复现脚本、数据字典、目录说明、描述性统计图表和小型成品统计表；不包含受许可限制的原始商业数据库文件。
+仓库公开保留可复现脚本、数据字典、目录说明、描述性统计图表和小型成品统计表；不包含受供应商许可限制的原始商业数据库文件。
 
-## What This Repository Is
+## 项目定位
 
-- A public code and documentation release for the local `mainProj` research workspace.
-- A Python prototype that processes Markit/S&P Securities Finance-style securities-lending data, CRSP daily/header files, matching outputs, and M0-M3 cost-aware portfolio experiments.
-- A reproducibility scaffold: directory structure, `.gitkeep` placeholders, reports, figures, and scripts are present so the project can be rebuilt when licensed raw data are placed locally.
+- 提供当前 `mainProj` 研究工作区的公开代码和文档版本。
+- 处理 Markit/S&P Securities Finance 风格的借券数据、CRSP 日频和证券属性数据、证券匹配结果，以及 M0-M3 成本处理组合实验。
+- 提供一套可复现的项目骨架：目录结构、`.gitkeep` 占位文件、报告、图表和脚本均已保留。用户在本地放入具有合法使用权限的原始数据后，可以按流程重新生成中间数据和分析结果。
 
-## What This Repository Is Not
+## 非项目范围
 
-- It is not an official JKMP full replication package.
-- It does not include licensed raw data from CRSP, Compustat, Markit/S&P, Capital IQ, 13F, or related vendors.
-- It does not include large generated Parquet files from `data/mid` or large panel files from `data/prod`.
-- It does not claim that the full official anomaly/factor signal panel, DGTW/factor returns, R/HPC environment, or all paper inputs are complete.
+- 本仓库不是官方 JKMP 完整复刻包。
+- 本仓库不包含 CRSP、Compustat、Markit/S&P、Capital IQ、13F 或其他供应商的授权原始数据。
+- 本仓库不包含 `data/mid` 中的大型中间 Parquet 文件，也不包含 `data/prod` 中的大型面板 Parquet 文件。
+- 本仓库不声称已经齐备完整的官方异象/因子信号面板、DGTW/因子收益、R/HPC 环境或论文所需的全部输入。
 
-## Public Data Policy
+## 数据公开策略
 
-The original raw files are intentionally excluded from Git:
+原始数据被有意排除在 Git 仓库之外：
 
-- `data/raw/**` is ignored, except `.gitkeep` placeholders.
-- `data/mid/**` is ignored, except `.gitkeep` placeholders, because it contains generated intermediate Parquet partitions.
-- Large `data/prod/**/*.parquet` files are ignored.
-- Small `data/prod/*.csv` and `data/prod/*.json` summary outputs are kept to make the repository readable without shipping proprietary raw data.
+- `data/raw/**` 全部忽略，仅保留 `.gitkeep` 占位文件。
+- `data/mid/**` 全部忽略，仅保留 `.gitkeep` 占位文件，因为该目录包含由原始数据生成的中间 Parquet 分区。
+- `data/prod/**/*.parquet` 全部忽略。
+- `data/prod/*.csv` 和 `data/prod/*.json` 中规模较小的汇总结果予以保留，便于读者了解当前原型结果，同时避免发布供应商原始数据。
 
-This policy keeps the project structure visible while avoiding accidental publication of licensed or oversized files.
+这样既保留了项目的目录结构，也避免意外公开受许可限制的数据或超过 GitHub 文件限制的大型文件。
 
-## Repository Layout
+## 仓库目录
 
 ```text
 .
 ├── data/
-│   ├── raw/       # Licensed raw vendor files go here locally; public repo keeps .gitkeep only
-│   ├── mid/       # Generated intermediate partitions; public repo keeps .gitkeep only
-│   └── prod/      # Small CSV/JSON outputs are tracked; large Parquet files are ignored
-├── docs/          # Data dictionaries, inventory reports, reproduction status, structure report
+│   ├── raw/       # 本地放置有权限使用的原始供应商数据；公开仓库仅保留 .gitkeep
+│   ├── mid/       # 生成的中间分区数据；公开仓库仅保留 .gitkeep
+│   └── prod/      # 跟踪小型 CSV/JSON 结果；大型 Parquet 文件被忽略
+├── docs/          # 数据字典、库存报告、复现状态和目录结构说明
 ├── reports/
-│   └── figures/   # Generated descriptive and prototype figures
-└── scripts/       # Reproducible processing, analysis, and report-generation scripts
+│   └── figures/   # 描述性统计图和原型分析图
+└── scripts/       # 数据处理、分析和报告生成脚本
 ```
 
-For a detailed directory guide, see [`docs/project_structure_report.md`](docs/project_structure_report.md).
+详细目录职责和文件放置规则见 [`docs/project_structure_report.md`](docs/project_structure_report.md)。
 
-## Key Documentation
+## 重要文档
 
 - [`docs/raw_data_dictionary_and_reproduction_status.md`](docs/raw_data_dictionary_and_reproduction_status.md)
-  Detailed raw-data dictionary, field explanations, reproduction status matrix, and interpretation of all existing figures.
+  原始数据字典、字段解释、复现状态矩阵，以及现有全部图表的来源和解读。
 
 - [`docs/raw_data_inventory_report.md`](docs/raw_data_inventory_report.md)
-  Inventory of local raw files from the private workspace, including sizes, row counts, hashes, and duplicate-file notes.
+  私有工作区原始文件库存报告，包括文件大小、行数、哈希和重复文件说明。
 
 - [`docs/research_pipeline_readme.md`](docs/research_pipeline_readme.md)
-  Pipeline order, major outputs, modeling assumptions, figure package, and current limitations.
+  处理流程、主要输出、模型口径、图表包和当前限制。
 
 - [`docs/project_structure_report.md`](docs/project_structure_report.md)
-  Recommended project structure, canonical outputs, non-canonical test outputs, and file-placement rules.
+  推荐目录结构、规范输出、测试输出和文件放置规则。
 
-## Main Scripts
+## 主要脚本
 
-| Script | Purpose |
+| 脚本 | 作用 |
 |---|---|
-| `scripts/raw_data_inventory.py` | Recursively inventories `data/raw` without loading huge CSVs into memory. |
-| `scripts/markit_coverage.py` | Processes securities-lending data, builds Markit coverage summaries, monthly fee tables, and Markit figures. |
-| `scripts/build_crsp_panel.py` | Builds a CRSP monthly common-stock panel and joins Markit borrow-fee information. |
-| `scripts/run_m0_m3_prototype.py` | Runs the M0-M3 cost-aware portfolio prototype. |
-| `scripts/make_research_reports.py` | Produces research summary tables and supporting reports. |
-| `scripts/make_presentation_visuals.py` | Builds presentation-oriented figures from `data/prod`. |
-| `scripts/raw_data_dictionary_report.py` | Generates the raw-data dictionary, reproduction status, and figure-interpretation report. |
-| `scripts/project_structure_report.py` | Generates the project-structure report. |
+| `scripts/raw_data_inventory.py` | 递归盘点 `data/raw`，避免将超大 CSV 整体载入内存。 |
+| `scripts/markit_coverage.py` | 处理借券数据，生成 Markit 覆盖率、月度费用表和 Markit 图表。 |
+| `scripts/build_crsp_panel.py` | 构建 CRSP 月度普通股面板，并匹配 Markit 借券费信息。 |
+| `scripts/run_m0_m3_prototype.py` | 运行 M0-M3 成本处理组合原型。 |
+| `scripts/make_research_reports.py` | 生成研究汇总表和相关说明报告。 |
+| `scripts/make_presentation_visuals.py` | 基于 `data/prod` 生成汇报型图表。 |
+| `scripts/raw_data_dictionary_report.py` | 生成原始数据字典、复现状态和图表解读报告。 |
+| `scripts/project_structure_report.py` | 生成项目目录结构报告。 |
 
-## Suggested Environment
+## 建议运行环境
 
-The scripts are plain Python scripts. The local development environment used Python 3.12.
+脚本使用普通 Python 运行。当前本地开发环境为 Python 3.12。
 
-Install the main Python dependencies with:
+安装主要依赖：
 
 ```bash
 pip install numpy pandas pyarrow matplotlib scipy
 ```
 
-Optional:
+可选组件：
 
-- `pdftotext` improves extraction of local WRDS PDF field dictionaries.
-- Git is required for version control.
-- Large-data pipeline steps require enough disk space and memory for local Parquet generation.
+- 安装 `pdftotext` 后，可以更好地抽取本地 WRDS PDF 字段字典。
+- 需要安装 Git 才能进行版本控制。
+- 运行大数据处理流程时，需要为原始文件、临时文件和 Parquet 输出预留足够的磁盘空间和内存。
 
-## Reproduction Workflow
+## 复现流程
 
-After cloning the public repository, place licensed raw data into the expected `data/raw` paths. The public repo preserves the directory skeleton with `.gitkeep`, but not the files themselves.
+克隆公开仓库后，将具有合法使用权限的原始数据放入预期的 `data/raw` 路径。公开仓库通过 `.gitkeep` 保留目录骨架，但不提供原始文件。
 
-Recommended local execution order:
+推荐的本地执行顺序如下：
 
 ```bash
 python scripts/raw_data_inventory.py --raw-dir data/raw --output docs/raw_data_inventory_report.md
@@ -104,71 +104,71 @@ python scripts/raw_data_dictionary_report.py --no-hash
 python scripts/project_structure_report.py
 ```
 
-The first four computational steps require private data that are not included in this repository. Documentation-generation steps can be rerun only after the expected local outputs exist.
+前四个计算步骤依赖未随仓库发布的原始数据。文档生成步骤也需要相应的本地中间数据或成品数据已经存在。
 
-## Expected Local Raw Inputs
+## 预期的本地原始数据
 
-The private workspace used these categories of source files:
+私有工作区使用过以下类别的源文件：
 
-- Markit/S&P Securities Finance American Equities.
-- CRSP daily stock files and stock header information.
-- CRSP distribution and delisting files.
-- Compustat quarterly fundamentals.
-- CCM-like link table.
-- Compustat supplemental short interest.
-- 13F institutional holdings files.
-- Capital IQ Key Developments.
+- Markit/S&P Securities Finance American Equities 借券数据。
+- CRSP 日频股票文件和 Stock Header Information。
+- CRSP 分配事件和退市文件。
+- Compustat 季度基本面数据。
+- CCM-like 公司与证券链接表。
+- Compustat Supplemental Short Interest 空头兴趣数据。
+- 13F 机构持仓文件。
+- Capital IQ Key Developments 公司事件数据。
 
-The exact local inventory and field explanations are documented in [`docs/raw_data_dictionary_and_reproduction_status.md`](docs/raw_data_dictionary_and_reproduction_status.md).
+具体文件库存、字段解释和当前复现状态见 [`docs/raw_data_dictionary_and_reproduction_status.md`](docs/raw_data_dictionary_and_reproduction_status.md)。
 
-## Tracked Outputs
+## 仓库中保留的成品
 
-This public repository keeps small outputs that help readers understand the current prototype:
+公开仓库保留以下小型结果，用于帮助读者理解当前研究原型：
 
-- Markit and CRSP coverage summaries in `data/prod/*.csv` and `data/prod/*.json`.
-- Prototype summary, monthly metrics, sensitivity, and metadata CSV/JSON files.
-- Descriptive and presentation figures under `reports/figures`.
-- Data dictionary and project-structure documentation under `docs`.
+- `data/prod/*.csv` 和 `data/prod/*.json` 中的 Markit、CRSP 覆盖率和匹配汇总。
+- 原型汇总、月度指标、敏感性分析和元数据文件。
+- `reports/figures` 下的描述性统计图和汇报图。
+- `docs` 下的数据字典、复现说明和目录结构文档。
 
-Large local outputs such as `markit_stock_monthly.parquet`, `crsp_monthly_panel.parquet`, and intermediate yearly Parquet partitions are excluded.
+本地的大型输出，例如 `markit_stock_monthly.parquet`、`crsp_monthly_panel.parquet` 和按年份生成的中间 Parquet 分区，均不会上传到公开仓库。
 
-## Figures
+## 图表
 
-The repository includes 17 PNG figures:
+仓库中包含 17 张 PNG 图表：
 
-- Markit descriptive figures under `reports/figures/markit`.
-- Presentation figures under `reports/figures/presentation`.
-- Prototype cumulative-return figures under `reports/figures/prototype`.
-- A historical short-test figure under `reports/figures/prototype_test3`, documented as non-canonical.
+- `reports/figures/markit`：Markit 借券费描述性统计图。
+- `reports/figures/presentation`：覆盖率、样本匹配、费用动态和原型结果汇报图。
+- `reports/figures/prototype`：完整研究区间的 M0-M3 累计收益图。
+- `reports/figures/prototype_test3`：历史短样本测试图，已在文档中标明不属于规范主结果。
 
-Each figure's source data, generation script, reading guide, interpretation, and limitation are explained in the figure section of [`docs/raw_data_dictionary_and_reproduction_status.md`](docs/raw_data_dictionary_and_reproduction_status.md).
+每张图的来源数据、生成脚本、阅读方法、主要含义和解释边界，均记录在 [`docs/raw_data_dictionary_and_reproduction_status.md`](docs/raw_data_dictionary_and_reproduction_status.md) 的图表章节中。
 
-## Current Research Scope
+## 当前研究范围
 
-The current Python prototype focuses on:
+当前 Python 原型主要研究：
 
-- Borrow-fee coverage and distribution.
-- Markit-CRSP matching and sample construction.
-- Borrow-fee persistence and cross-sectional heterogeneity.
-- A simplified M0-M3 mechanism comparison:
-  - M0: no transaction costs or borrow fees.
-  - M1: transaction costs included.
-  - M2: M1 weights with ex-post short borrow-fee deduction.
-  - M3: transaction costs and short borrow-fee costs included in the optimization objective.
+- 借券费的覆盖率和横截面分布。
+- Markit-CRSP 匹配和样本构建。
+- 借券费的持续性和横截面异质性。
+- 简化的 M0-M3 机制比较：
+  - M0：不考虑交易成本和借券费。
+  - M1：将交易成本纳入处理。
+  - M2：使用 M1 权重，事后扣除空头借券费。
+  - M3：同时将交易成本和空头借券费纳入优化目标函数。
 
-The M0-M3 outputs are mechanism checks, not final official paper replication results.
+M0-M3 输出用于检查机制和代码链路，不应直接解释为官方论文的最终复刻结果。
 
-## Limitations
+## 当前限制
 
-- Official JKMP inputs such as `usa.csv`, `usa_dsf.csv`, full signal panels, factor-return files, and related metadata are not included.
-- The official R/Rscript and HPC/SLURM environment is not reproduced here.
-- Some vendor fields, especially non-CRSP/Compustat fields, are interpreted from field names and project usage and still require vendor dictionary confirmation.
-- The public repository includes small derived summaries, but full rebuilds require locally available licensed raw data.
+- 官方 JKMP 输入，例如 `usa.csv`、`usa_dsf.csv`、完整信号面板、因子收益文件及相关元数据，不包含在本仓库中。
+- 官方 R/Rscript 和 HPC/SLURM 运行环境没有在本仓库中复现。
+- 部分非 CRSP/Compustat 字段是根据字段名和项目用法解释的，最终仍需要供应商字段字典核验。
+- 仓库中的小型派生汇总可以帮助理解当前原型，但完整重跑仍要求本地具备有权限使用的原始数据。
 
-## Citation and Data Access
+## 引用与数据访问
 
-If using this repository as a research scaffold, cite the original data providers and papers according to their licensing and academic requirements. This repository does not redistribute raw vendor data and does not grant data access rights.
+如果将本仓库用于研究，请按照数据供应商和原论文的许可及学术引用要求进行引用。本仓库不再分发供应商原始数据，也不授予任何数据访问权限。
 
-## License
+## 许可证
 
-No explicit open-source license has been added yet. Until a license file is provided, treat the code and documentation as publicly visible but not automatically relicensed for unrestricted reuse.
+目前尚未添加明确的开源许可证。在正式添加许可证之前，代码和文档虽然公开可见，但不应默认理解为已经授予不受限制的再发布、修改或商业使用权。
